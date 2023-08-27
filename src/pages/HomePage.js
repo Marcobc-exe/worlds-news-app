@@ -8,6 +8,7 @@ import { capitalizeSentence, capitalizeText } from "../utils/capitalize";
 
 export const HomePage = () => {
   const { country, category } = useSelector((state) => state.headlines);
+  console.log(country);
 
   return (
     <>
