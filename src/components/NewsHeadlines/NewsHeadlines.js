@@ -1,11 +1,11 @@
 import useSWR from "swr";
-import { fetchNewsHeadlines } from "../../fetchNews";
+import { getHeadlines } from "../../api/headlinesStore/fetchNews";
 import { PulseLoader } from "react-spinners";
 
-export const NewsHeadlines = ({ country, category, delay }) => {
-  const props = { country, category, delay };
+export const NewsHeadlines = ({ country, delay }) => {
+  const props = { country, delay };
   const config = { suspense: true };
-  const { data, error } = useSWR(props, fetchNewsHeadlines, config);
+  const { data, error } = useSWR(props, getHeadlines, config);
 
   if (error) {
     return (
@@ -20,20 +20,21 @@ export const NewsHeadlines = ({ country, category, delay }) => {
     return <PulseLoader color="#e0e1dd" size={12} speedMultiplier={0.7} />;
   }
 
-  const news = data.read();
-  console.log(news);
+  console.log(data)
+  // const news = data.read();
+  // console.log(news);
 
-  if (news.status === "error") {
-    return (
-      <>
-        <h3 style={{ color: "#d9d9d9" }}>Error: {news.code}</h3>
-        <p>{news.message}</p>
-      </>
-    );
-  }
+  // if (news.status === "error") {
+  //   return (
+  //     <>
+  //       <h3 style={{ color: "#d9d9d9" }}>Error: {news.code}</h3>
+  //       <p>{news.message}</p>
+  //     </>
+  //   );
+  // }
   return (
     <>
-      {news?.articles.map((item, index) => (
+      {data?.articles.map((item, index) => (
         <div
           style={{
             border: "1px solid #D9D9D9",
