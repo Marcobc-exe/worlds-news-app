@@ -1,13 +1,17 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Aleo";
+  src: url(./font/aleo-regular-webfont.woff2) format("woff2"),
+       url(./font/aleo-bold-webfont.woff2) format("woff2"),
+       url(./font/aleo-bolditalic-webfont.woff2) format("woff2"),
+       url(./font/aleo-italic-webfont.woff2) format("woff2"),
+       url(./font/aleo-light-webfont.woff2) format("woff"),
+       url(./font/aleo-lightitalic-webfont.woff2) format("woff2"),
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: "Aleo";
+  height: 100vh;
+  background-color: #222;
+  color: #e0e1dd;
 }
