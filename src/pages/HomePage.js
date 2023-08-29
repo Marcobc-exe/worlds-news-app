@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { NewsHeadlines } from "../components/NewsHeadlines/NewsHeadlines";
 import { PulseLoader } from "react-spinners";
 import { capitalizeSentence, capitalizeText } from "../utils/capitalize";
+import "../App.css";
 
 export const HomePage = () => {
   const { country, category } = useSelector((state) => state.headlines);

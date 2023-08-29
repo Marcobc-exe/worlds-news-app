@@ -1,14 +1,25 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { HomePage } from "../pages/HomePage";
-import { Layout } from "../components/Layout/Layout";
+import { CircularProgress } from "@mui/material";
+import { PrivateRoutes, PublicRoutes } from "./helperRoutes";
+import { Route, Routes } from "react-router-dom";
+
+const Status = {
+  CHECKING: "checking",
+  AUTHENTICATED: "authenticaded",
+  NO_AUTHENTICATED: "no-authenticated",
+};
+
+let status = Status.AUTHENTICATED;
 
 export const AppRouter = () => {
+  if (status === "checking") return <CircularProgress color="#d9d9d9" />;
+
   return (
-    <Layout>
-      <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Layout>
+    <Routes>
+      {status === "authenticaded" ? (
+        <Route path="/*" element={<PrivateRoutes />} />
+      ) : (
+        <Route path="/*" element={<PublicRoutes />} />
+      )}
+    </Routes>
   );
 };

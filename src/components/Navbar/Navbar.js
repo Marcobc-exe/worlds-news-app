@@ -7,6 +7,7 @@ import { capitalizeSentence } from "../../utils/capitalize";
 import { useNewsProps } from "../../hooks/useNewsProps";
 import { useState } from "react";
 import { countries } from "../../const/countries";
+import { Link, useNavigate } from "react-router-dom";
 
 const AppBar = styled(
   MuiAppBar,
@@ -18,6 +19,7 @@ const AppBar = styled(
 export const Navbar = () => {
   const [switchMenuCountries, setSwitchMenuCountries] = useState(false);
   const { handlePropCountry, handlePropCategory } = useNewsProps();
+  const navigate = useNavigate()
   // const { country } = useSelector((state) => state.headlines);
 
   const showMenuCountries = (event) => {
@@ -28,8 +30,12 @@ export const Navbar = () => {
     setSwitchMenuCountries(false);
   };
 
-  const handleCategoryNews = (event) => {
+  const handleCategoryNews = (event, index) => {
+    let route = event.target.id
+    console.log(route)
+    console.log(index)
     handlePropCategory(event.target.id);
+    return navigate(route)
   };
 
   const handleCountryNews = (event) => {
@@ -44,7 +50,7 @@ export const Navbar = () => {
     <AppBar id="appBar">
       <Toolbar className="toolbar main">
         <h2>News app</h2>
-        <Toolbar className="toolbar categories">
+        <Toolbar>
           <p
             onMouseEnter={showMenuCountries}
             onMouseLeave={hiddenCloseCountries}
@@ -72,10 +78,14 @@ export const Navbar = () => {
           )}
           {categories
             .sort((a, b) => a.localeCompare(b))
-            .map((category) => (
-              <p id={category} onClick={handleCategoryNews}>
+            .map((category, index) => (
+              <Link
+                key={category}
+                id={category}
+                onClick={(event) => handleCategoryNews(event, index)}
+              >
                 {capitalizeSentence(category)}
-              </p>
+              </Link>
             ))}
         </Toolbar>
       </Toolbar>
