@@ -4,10 +4,6 @@
   justify-content: center;
 }
 
-.toolbar.main > h2 {
-  padding-right: 24px;
-}
-
 .toolbar.categories {
   border-left: 1px solid #d9d9d9;
 }
@@ -16,9 +12,11 @@
   margin: 0px 10px;
   cursor: pointer;
   padding: 1px 5px;
+  transition: all .2s ease-out;
 }
 
-.toolbar.categories > p:hover {
+.toolbar.categories > p:hover,
+.containerCategories > a:hover {
   color: lightgrey;
 }
 
@@ -32,12 +30,12 @@
   top: 67%;
 }
 
-.containerItem > p {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 5px;
-  padding: 3px 5px;
-  border-radius: 20px;
+.containerCategories > a {
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 1px 5px;
+  color: white;
+  letter-spacing: 0.5px;
   transition: all .2s ease-out;
 }
 
