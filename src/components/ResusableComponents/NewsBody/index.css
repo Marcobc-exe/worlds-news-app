@@ -1,0 +1,13 @@
+.newsBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, .txtCategory {
+  text-align: center;
+}
+
+.txtCategory {
+  margin-bottom: 20px;
+}

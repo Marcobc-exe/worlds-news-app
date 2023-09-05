@@ -15,7 +15,6 @@ export const FlagList = () => {
   }, [setSwitchMenuCountries]);
 
   const handleCountryNews = useCallback((event) => {
-    console.log()
     const props = {
       code: event.target.id,
       name: event.target.alt,
