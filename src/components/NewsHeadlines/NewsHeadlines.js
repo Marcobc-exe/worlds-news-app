@@ -21,17 +21,5 @@ export const NewsHeadlines = ({ country, delay }) => {
     return <PulseLoader color="#e0e1dd" size={12} speedMultiplier={0.7} />;
   }
 
-  console.log(data);
-  // const news = data.read();
-  // console.log(news);
-
-  // if (news.status === "error") {
-  //   return (
-  //     <>
-  //       <h3 style={{ color: "#d9d9d9" }}>Error: {news.code}</h3>
-  //       <p>{news.message}</p>
-  //     </>
-  //   );
-  // }
   return <NewsBody newsData={data} />;
 };
